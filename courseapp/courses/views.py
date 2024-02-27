@@ -4,16 +4,19 @@ from django.shortcuts import render
 def courses(request):
     return HttpResponse('Course List')
 
-def details(request):
-    return HttpResponse('Course Details Page')
+def details(request, course_name):
+    return HttpResponse(f"{course_name} detail page")
 
-def getCoursesByCategory(request, category):
+def getCoursesByCategoryName(request, category_name):
     text = ''
-    if(category == "programming"):
+    if(category_name == "programming"):
         text = "List of courses in the Programming Category"
-    elif(category == "web-development"):
+    elif(category_name == "web-development"):
         text = "List of courses in the Web Development Category"
     else:
         text = "False Category Selection"
         
     return HttpResponse(text)
+
+def getCoursesByCategoryId(request, category_id):
+    return HttpResponse(category_id)
