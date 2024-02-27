@@ -1,10 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
-
-def home(request):
-    return HttpResponse('Homepage')
-
 def courses(request):
     return HttpResponse('Course List')
+
+def details(request):
+    return HttpResponse('Course Details Page')
+
+def programming(request):
+    return HttpResponse('Programming Course List')
+
+def mobileapplications(request):
+    return HttpResponse('Mobile Applications Course List')
