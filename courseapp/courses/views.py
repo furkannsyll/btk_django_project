@@ -7,8 +7,13 @@ def courses(request):
 def details(request):
     return HttpResponse('Course Details Page')
 
-def programming(request):
-    return HttpResponse('Programming Course List')
-
-def mobileapplications(request):
-    return HttpResponse('Mobile Applications Course List')
+def getCoursesByCategory(request, category):
+    text = ''
+    if(category == "programming"):
+        text = "List of courses in the Programming Category"
+    elif(category == "web-development"):
+        text = "List of courses in the Web Development Category"
+    else:
+        text = "False Category Selection"
+        
+    return HttpResponse(text)
