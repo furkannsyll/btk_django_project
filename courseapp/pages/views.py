@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def home(request):
-    return HttpResponse('Homepage')
-
-def contact(request):
-    return HttpResponse('Contact Page')
+def index(request):
+    return render(request, 'pages/index.html')
 
 def about(request):
-    return HttpResponse('About Us')
+    return render(request, 'pages/about.html')
+
+def contact(request):
+    return render(request, 'pages/contact.html')

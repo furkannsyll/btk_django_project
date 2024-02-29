@@ -8,6 +8,9 @@ data = {
     "mobile":"Courses in the Mobile Category"
 }
 
+def index(request):
+    return render(request, 'courses/index.html')
+
 def courses(request):
     list_items = ""
     category_list = list(data.keys())
