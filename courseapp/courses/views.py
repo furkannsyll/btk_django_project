@@ -9,7 +9,16 @@ data = {
 }
 
 def courses(request):
-    return HttpResponse('Course List')
+    list_items = ""
+    category_list = list(data.keys())
+
+    for category in category_list:
+        redirect_url = reverse('courses_by_category', args=[category])
+        list_items += f"<li><a href ='{redirect_url}'>{category}</a></li>"
+    
+    html = f"<h1>Course List</h1><br><ul>{list_items}</ul>"
+
+    return HttpResponse(html)
 
 def details(request, course_name):
     return HttpResponse(f"{course_name} detail page")
@@ -19,7 +28,7 @@ def getCoursesByCategoryName(request, category_name):
         category_text = data[category_name]
         return HttpResponse(category_text)
     except:
-        return HttpResponseNotFound('False Category Selection')
+        return HttpResponseNotFound('<h1>False Category Selection</h1>')
 
 def getCoursesByCategoryId(request, category_id):
     category_list = list(data.keys())
