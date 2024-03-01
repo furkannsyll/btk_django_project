@@ -34,17 +34,17 @@ db = {
      }
     ],
     "categories": [
-        "programming", 
-        "web-development",
-        "mobile-application"
+        { "id": 1, "name":"programming", "slug":"programming" }, 
+        { "id": 2, "name":"web-development", "slug":"web-development" }, 
+        { "id": 3, "name":"mobile-application", "slug":"mobile-application" }, 
     ]
 }
 
 def index(request):
-    list_items = ""
-    category_list = list(data.keys())
+    courses = db["courses"]
+    categories = db["categories"]
 
-    return render(request, "courses/index.html", {'categories': category_list})
+    return render(request, "courses/index.html", {'categories': categories, 'courses': courses,})
 
 def details(request, course_name):
     return HttpResponse(f"{course_name} detail page")
