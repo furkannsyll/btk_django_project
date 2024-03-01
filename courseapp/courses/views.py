@@ -29,7 +29,7 @@ def details(request, course_name):
 def getCoursesByCategoryName(request, category_name):
     try:
         category_text = data[category_name]
-        return HttpResponse(category_text)
+        return render(request, "courses/courses.html", {'category': category_name, 'category_text': category_text} )
     except:
         return HttpResponseNotFound('<h1>False Category Selection</h1>')
 
