@@ -1,3 +1,4 @@
+from datetime import date
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -8,6 +9,36 @@ data = {
     "mobile":"Courses in the Mobile Category"
 }
 
+db = {
+    "courses": [
+     {
+        "title":"Javascript Course",
+        "description":"Javascript Course Description",
+        "imageUrl":"https://img-c.udemycdn.com/course/750x422/1662526_fc1c_3.jpg",
+        "slug":"javascript-course",
+        "date": date(2022,10,10)
+     },
+     {
+        "title":"Python Course",
+        "description":"Python Course Description",
+        "imageUrl":"https://img-c.udemycdn.com/course/750x422/2463492_8344_3.jpg",
+        "slug":"python-course",
+        "date": date(2023,1,10)
+     },
+     {
+        "title":"Web Development Course",
+        "description":"Web Development Course Description",
+        "imageUrl":"https://img-c.udemycdn.com/course/750x422/1258436_2dc3_4.jpg",
+        "slug":"web-development-course",
+        "date": date(2023,6,10)
+     }
+    ],
+    "categories": [
+        "programming", 
+        "web-development",
+        "mobile-application"
+    ]
+}
 
 def index(request):
     list_items = ""
