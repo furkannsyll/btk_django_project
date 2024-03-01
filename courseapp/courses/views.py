@@ -8,20 +8,12 @@ data = {
     "mobile":"Courses in the Mobile Category"
 }
 
-def index(request):
-    return render(request, 'courses/index.html')
 
-def courses(request):
+def index(request):
     list_items = ""
     category_list = list(data.keys())
 
-    for category in category_list:
-        redirect_url = reverse('courses_by_category', args=[category])
-        list_items += f"<li><a href ='{redirect_url}'>{category}</a></li>"
-    
-    html = f"<h1>Course List</h1><br><ul>{list_items}</ul>"
-
-    return HttpResponse(html)
+    return render(request, "courses/index.html", {'categories': category_list})
 
 def details(request, course_name):
     return HttpResponse(f"{course_name} detail page")

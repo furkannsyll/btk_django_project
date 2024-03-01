@@ -1,5 +1,5 @@
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action">Programming</a>
-    <a href="#" class="list-group-item list-group-item-action">Web Development</a>
-    <a href="#" class="list-group-item list-group-item-action">Mobile Development</a>
-</div>
+    {% for category in categories %}
+    <a href="{% url "courses_by_category" category %}" class="list-group-item list-group-item-action">{{ category }}</a>
+    {% endfor %}
+</div> 
