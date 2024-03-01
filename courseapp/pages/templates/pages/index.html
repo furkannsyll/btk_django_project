@@ -9,8 +9,18 @@
 {% endblock page_title %}
 
 {% block content %} 
-    <h1>Home Page</h1>
-    <i class="fa-solid fa-bug"></i>
+    <section>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-3">
+                    {% include "courses/partials/_categories.html" %}
+                </div>
+                <div class="col-9">
+                    <h1>Home Page</h1>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
 
 {% block js_files %}{% endblock js_files %}
