@@ -16,21 +16,27 @@ db = {
         "description":"Javascript Course Description",
         "imageUrl":"https://img-c.udemycdn.com/course/750x422/1662526_fc1c_3.jpg",
         "slug":"javascript-course",
-        "date": date(2022,10,10)
+        "date": date(2022,10,10),
+        "isActive":True,
+        "isUpdated":False
      },
      {
         "title":"Python Course",
         "description":"Python Course Description",
         "imageUrl":"https://img-c.udemycdn.com/course/750x422/2463492_8344_3.jpg",
         "slug":"python-course",
-        "date": date(2023,1,10)
+        "date": date(2023,1,10),
+        "isActive":False,
+        "isUpdated":False
      },
      {
         "title":"Web Development Course",
         "description":"Web Development Course Description",
         "imageUrl":"https://img-c.udemycdn.com/course/750x422/1258436_2dc3_4.jpg",
         "slug":"web-development-course",
-        "date": date(2023,6,10)
+        "date": date(2023,6,10),
+        "isActive":True,
+        "isUpdated":True
      }
     ],
     "categories": [
@@ -41,7 +47,16 @@ db = {
 }
 
 def index(request):
-    courses = db["courses"]
+    # 2nd Alternative
+    # courses = []
+    # categories = db["categories"]
+
+    # for course in db["courses"]:
+    #     if course["isActive"] == True:
+    #         courses.append(course)
+
+    # list comprehension
+    courses = [course for course in db["courses"] if course["isActive"]==True]
     categories = db["categories"]
 
     return render(request, "courses/index.html", {'categories': categories, 'courses': courses,})
