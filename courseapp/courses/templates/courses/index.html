@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "courses/css/style.css" %}">
+{% endblock %}
 
 {% block page_title %}
     courses
@@ -20,3 +25,7 @@
         </div>
     </section>
 {% endblock content %}
+
+{% block js_files %}
+    <script src="{% static "courses/js/script.js" %}"></script>
+{% endblock js_files %}

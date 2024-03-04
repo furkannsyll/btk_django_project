@@ -14,7 +14,7 @@ db = {
      {
         "title":"Javascript Course",
         "description":"Javascript Course Description",
-        "imageUrl":"https://img-c.udemycdn.com/course/750x422/1662526_fc1c_3.jpg",
+        "imageUrl":"1.jpg",
         "slug":"javascript-course",
         "date": datetime.now(),
         "isActive":True,
@@ -23,7 +23,7 @@ db = {
      {
         "title":"Python Course",
         "description":"Python Course Description",
-        "imageUrl":"https://img-c.udemycdn.com/course/750x422/2463492_8344_3.jpg",
+        "imageUrl":"2.jpg",
         "slug":"python-course",
         "date": date(2023,1,10),
         "isActive":False,
@@ -32,7 +32,7 @@ db = {
      {
         "title":"Web Development Course",
         "description":"Web Development Course Description",
-        "imageUrl":"https://img-c.udemycdn.com/course/750x422/1258436_2dc3_4.jpg",
+        "imageUrl":"3.jpg",
         "slug":"web-development-course",
         "date": date(2023,6,10),
         "isActive":True,
