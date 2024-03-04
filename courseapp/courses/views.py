@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -16,7 +16,7 @@ db = {
         "description":"Javascript Course Description",
         "imageUrl":"https://img-c.udemycdn.com/course/750x422/1662526_fc1c_3.jpg",
         "slug":"javascript-course",
-        "date": date(2022,10,10),
+        "date": datetime.now(),
         "isActive":True,
         "isUpdated":False
      },
@@ -47,15 +47,6 @@ db = {
 }
 
 def index(request):
-    # 2nd Alternative
-    # courses = []
-    # categories = db["categories"]
-
-    # for course in db["courses"]:
-    #     if course["isActive"] == True:
-    #         courses.append(course)
-
-    # list comprehension
     courses = [course for course in db["courses"] if course["isActive"]==True]
     categories = db["categories"]
 

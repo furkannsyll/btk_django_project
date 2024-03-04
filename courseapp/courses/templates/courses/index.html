@@ -13,12 +13,6 @@
                 </div>
                 <div class="col-9">
                     {% for course in courses %}
-                        {% comment %} 
-                        1st Alternative
-                            {% if course.isActive %}
-                                {% include "courses/partials/_course.html" %}
-                            {% endif %} 
-                        {% endcomment %}
                         {% include "courses/partials/_course.html" %}
                     {% endfor %}
                 </div>
