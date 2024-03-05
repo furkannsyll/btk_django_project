@@ -11,3 +11,7 @@ class Course(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.date}"
+    
+class Category(models.Model):
+    name = models.CharField(max_length=40)
+    slug = models.CharField(max_length=50)
