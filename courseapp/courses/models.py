@@ -13,7 +13,7 @@ class Course(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     imageUrl = models.CharField(max_length=50)
-    date = models.DateField()
+    date = models.DateField(auto_now=True)
     isActive = models.BooleanField()
     slug = models.SlugField(default="",blank=True, editable=False, null=False, unique=True, db_index=True)
     category = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
