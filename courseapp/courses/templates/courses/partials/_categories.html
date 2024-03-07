@@ -1,6 +1,7 @@
 <div class="list-group">
+    <a href="/courses" class="list-group-item list-group-item-action fw-bold">CATEGORIES</a>
     {% for category in categories %}
-         <a href="{% url "courses_by_category" category.slug %}" class="list-group-item list-group-item-action">
+        <a href="{% url "courses_by_category" category.slug %}" class="list-group-item list-group-item-action {% if selectedCategory == category.slug %}active{% endif %}">
             {{ category.name|title }}
         </a>
     {% endfor %}
