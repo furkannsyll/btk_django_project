@@ -20,7 +20,7 @@ def details(request, slug):
     return render(request, 'courses/details.html', context)
 
 def getCoursesByCategoryName(request, slug):
-    courses = Course.objects.filter(category__slug=slug, isActive=True)
+    courses = Course.objects.filter(categories__slug=slug, isActive=True)
     categories = Category.objects.all()
 
     return render(request, 'courses/index.html', {'categories': categories, 'courses': courses, 'selectedCategory': slug})
