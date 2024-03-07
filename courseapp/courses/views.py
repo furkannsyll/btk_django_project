@@ -1,8 +1,6 @@
-from datetime import date, datetime
-from django.http import Http404, HttpResponseNotFound
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
+from django.shortcuts import get_object_or_404, render
 from .models import Course, Category
+from django.core.paginator import Paginator
 
 def index(request):
     courses = Course.objects.filter(isActive=1)
@@ -20,7 +18,12 @@ def details(request, slug):
     return render(request, 'courses/details.html', context)
 
 def getCoursesByCategoryName(request, slug):
-    courses = Course.objects.filter(categories__slug=slug, isActive=True)
+    courses = Course.objects.filter(categories__slug=slug, isActive=True).order_by("date")
     categories = Category.objects.all()
 
-    return render(request, 'courses/index.html', {'categories': categories, 'courses': courses, 'selectedCategory': slug})
+    paginator = Paginator(courses, 3)
+    #page = 1
+    page = request.GET.get('page',1)
+    paginatorcourses = paginator.get_page(page)
+
+    return render(request, 'courses/index.html', {'categories': categories, 'courses': paginatorcourses, 'selectedCategory': slug})
