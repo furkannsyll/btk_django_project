@@ -22,8 +22,7 @@ def getCoursesByCategoryName(request, slug):
     categories = Category.objects.all()
 
     paginator = Paginator(courses, 3)
-    #page = 1
     page = request.GET.get('page',1)
-    paginatorcourses = paginator.get_page(page)
+    page_obj = paginator.page(page)
 
-    return render(request, 'courses/index.html', {'categories': categories, 'courses': paginatorcourses, 'selectedCategory': slug})
+    return render(request, 'courses/index.html', {'categories': categories, 'page_obj': page_obj, 'selectedCategory': slug})
