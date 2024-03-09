@@ -3,7 +3,7 @@ from .models import Course, Category
 from django.core.paginator import Paginator
 
 def index(request):
-    courses = Course.objects.filter(isActive=1)
+    courses = Course.objects.filter(isActive=1, isHome=True)
     categories = Category.objects.all()
 
     return render(request, "courses/index.html", {'categories': categories, 'courses': courses,})
@@ -16,11 +16,7 @@ def search(request):
     else:
         return redirect("/courses")
     
-    paginator = Paginator(courses, 3)
-    page = request.GET.get('page',1)
-    page_obj = paginator.page(page)
-
-    return render(request, 'courses/list.html', {'categories': categories, 'page_obj': page_obj,})
+    return render(request, 'courses/search.html', {'categories': categories, 'courses': courses,})
 
 def details(request, slug):
 
@@ -39,4 +35,4 @@ def getCoursesByCategoryName(request, slug):
     page = request.GET.get('page',1)
     page_obj = paginator.page(page)
 
-    return render(request, 'courses/index.html', {'categories': categories, 'page_obj': page_obj, 'selectedCategory': slug})
+    return render(request, 'courses/list.html', {'categories': categories, 'page_obj': page_obj, 'selectedCategory': slug})
