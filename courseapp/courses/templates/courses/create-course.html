@@ -15,6 +15,7 @@
             <div class="row">
                 <div class="col-12">
                     <form action="{% url "create_course" %}" method="POST">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" name="title" class="form-control">
