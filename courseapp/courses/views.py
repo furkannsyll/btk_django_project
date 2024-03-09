@@ -9,6 +9,24 @@ def index(request):
     return render(request, "courses/index.html", {'categories': categories, 'courses': courses,})
 
 def create_course(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        description = request.POST["description"]
+        imageUrl = request.POST["imageUrl"]
+        slug = request.POST["slug"]
+        isActive = request.POST.get("isActive", False)
+        isHome = request.POST.get("isHome", False)
+
+        if isActive == "on":
+            isActive = True
+
+        if isHome == "on":
+            isHome = True
+
+        course = Course(title=title, description=description, imageUrl=imageUrl, slug=slug, isActive=isActive, isHome=isHome)
+        course.save()
+        return redirect("/courses")
+
     return render(request, "courses/create-course.html")
 
 
