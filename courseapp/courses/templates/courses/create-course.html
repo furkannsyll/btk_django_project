@@ -19,7 +19,7 @@
                             {{ msg }}
                         </div>
                     {% endif %}
-                    <form action="{% url "create_course" %}" method="POST">
+                    <form action="{% url "create_course" %}" method="POST" novalidate>
                         {% csrf_token %}
                         {{ form }}
                         <button class="btn btn-primary" type="submit">Save</button>
