@@ -23,6 +23,20 @@ def create_course(request):
         if isHome == "on":
             isHome = True
 
+        error = False
+        msg = ""
+
+        if title == "":
+            error = True
+            msg += "Title value is required "
+
+        if len(title) < 5:
+            error = True
+            msg += "You must enter more than 5 characters for the title value "
+        
+        if error:
+            return render(request, "courses/create-course.html", {"error":True, "msg": msg })
+
         course = Course(title=title, description=description, imageUrl=imageUrl, slug=slug, isActive=isActive, isHome=isHome)
         course.save()
         return redirect("/courses")
