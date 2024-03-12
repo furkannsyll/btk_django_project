@@ -19,7 +19,7 @@
                                 <th style="width: 120px;"></th>
                                 <th>Title</th>
                                 <th>Slug</th>
-                                <th style="width: 50px;"></th>
+                                <th style="width: 120px;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +28,10 @@
                                     <td><img src="{% static "courses/img/"|add:course.imageUrl %}" class="img-fluid"></td>
                                     <td>{{ course.title }}</td>
                                     <td>{{ course.slug }}</td>
-                                    <td><a href="{% url "course_edit" course.id %}" class="btn btn-primary btn-sm">Edit</a></td>
+                                    <td>
+                                        <a href="{% url "course_edit" course.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{% url "course_delete" course.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

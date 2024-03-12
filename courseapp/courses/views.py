@@ -37,6 +37,16 @@ def course_edit(request,id):
 
     return render(request, 'courses/edit-course.html', {'form': form })
 
+def course_delete(request,id):
+   course = get_object_or_404(Course, pk=id)
+
+   if request.method == "POST":
+       course.delete()
+       return redirect("course_list")
+
+   return render(request, 'courses/course-delete.html', {'course': course }) 
+    
+
 def search(request):
     if "q" in request.GET and request.GET["q"] != "":
         q = request.GET["q"]
