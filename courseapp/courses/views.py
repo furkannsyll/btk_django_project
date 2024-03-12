@@ -44,7 +44,13 @@ def course_delete(request,id):
        course.delete()
        return redirect("course_list")
 
-   return render(request, 'courses/course-delete.html', {'course': course }) 
+   return render(request, 'courses/course-delete.html', {'course': course })
+
+def upload(request):
+    if request.method == "POST":
+        uploaded_image = request.FILES['image']
+        return render(request, "courses/success.html")
+    return render(request, 'courses/upload.html')
     
 
 def search(request):

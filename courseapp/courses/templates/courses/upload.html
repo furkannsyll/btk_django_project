@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "courses/css/style.css" %}">
+{% endblock %}
+
+{% block page_title %}
+{% endblock page_title %}
+
+{% block content %} 
+    <section>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-12">
+                    <form action="{% url "upload_image" %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="uploadImage" name="image">
+                            <button class="btn btn-outline-secondary" type="submit">Upload</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block js_files %}
+    <script src="{% static "courses/js/script.js" %}"></script>
+{% endblock js_files %}
