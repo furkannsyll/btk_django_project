@@ -1,7 +1,9 @@
+import os
 from django.shortcuts import get_object_or_404, redirect, render
 from courses.forms import CourseCreateForm, CourseEditForm
 from .models import Course, Category
 from django.core.paginator import Paginator
+import random
 
 def index(request):
     courses = Course.objects.filter(isActive=1, isHome=True)
@@ -49,8 +51,18 @@ def course_delete(request,id):
 def upload(request):
     if request.method == "POST":
         uploaded_image = request.FILES['image']
+        handle_uploaded_files(uploaded_image)
         return render(request, "courses/success.html")
     return render(request, 'courses/upload.html')
+
+def handle_uploaded_files(file):
+    number = random.randint(1,99999)
+    filename, file_extension = os.path.splitext(file.name)
+    name = filename + "_" + str(number) + file_extension
+    # with open("temp/" + file.name,"wb+") as destination:
+    with open("temp/" + name,"wb+") as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
     
 
 def search(request):
