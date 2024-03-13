@@ -1,1 +1,43 @@
-login
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "courses/css/style.css" %}">
+{% endblock %}
+
+{% block page_title %}
+{% endblock page_title %}
+
+{% block content %} 
+    <section>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Login</h1>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                    {{ error }}
+                            </div>
+                        {% endif %}
+                        <div class="mb-3">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block js_files %}
+    <script src="{% static "courses/js/script.js" %}"></script>
+{% endblock js_files %}
