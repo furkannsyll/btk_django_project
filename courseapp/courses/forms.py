@@ -63,3 +63,6 @@ class CourseEditForm(forms.ModelForm):
                 "required": "You must enter the Course description",
             }
         }
+
+class UploadForm(forms.Form):
+    image = forms.ImageField()
