@@ -1,20 +1,36 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
     <div class="container">
         <a href="{% url "index" %}" class="navbar-brand">Course App</a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a href="{% url "index" %}" class="nav-link">Courses</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url "create_course" %}" class="nav-link">Admin Add Course</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url "course_list" %}" class="nav-link">Admin Courses</a>
-            </li>
-        </ul>
-        <form class="d-flex" action="{% url "search" %}">
-            <input class="form-control me-2" type="text" name="q" placeholder="Keyword">
-            <button class="btn btn-secondary" type="submit">Search</button>
-        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="{% url "index" %}" class="nav-link">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "create_course" %}" class="nav-link">Admin Add Course</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "course_list" %}" class="nav-link">Admin Courses</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-0">
+                <li class="nav-item">
+                    <a href="{% url "user_login" %}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "user_register" %}" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "user_logout" %}" class="nav-link">Logout</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="{% url "search" %}">
+                <input class="form-control me-2" type="text" name="q" placeholder="Keyword">
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+    </div>
     </div>
 </nav>
