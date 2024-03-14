@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -16,13 +17,15 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
+            messages.add_message(request, messages.SUCCESS, "Login successful")
             nextUrl = request.GET.get("next", None)
             if nextUrl is None:
                 return redirect("index")
             else:
                 return redirect(nextUrl)
         else:
-            return render(request, "account/login.html", { "error":"Username or Password is incorrect"})
+            messages.add_message(request, messages.ERROR, "Username or Password is incorrect")
+            return render(request, "account/login.html")
     else:
         return render(request, "account/login.html")
 
@@ -49,5 +52,6 @@ def user_register(request):
         return render(request, "account/register.html")
 
 def user_logout(request):
+    messages.add_message(request, messages.SUCCESS, "Logout successful")
     logout(request)
     return redirect("index")
