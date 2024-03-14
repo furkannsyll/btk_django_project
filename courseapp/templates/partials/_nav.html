@@ -9,12 +9,14 @@
                 <li class="nav-item">
                     <a href="{% url "index" %}" class="nav-link">Courses</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url "create_course" %}" class="nav-link">Admin Add Course</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "course_list" %}" class="nav-link">Admin Courses</a>
-                </li>
+                {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a href="{% url "create_course" %}" class="nav-link">Admin Add Course</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url "course_list" %}" class="nav-link">Admin Courses</a>
+                    </li>
+                {% endif %}
             </ul>
             <ul class="navbar-nav me-0">
                 {% if user.is_authenticated %}
