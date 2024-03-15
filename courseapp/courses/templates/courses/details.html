@@ -18,7 +18,12 @@
                 </div>
                 <div class="col-8">
                     <h1 class="h3">{{ course.title }}</h1>
-                    <p>{{ course.description }}</p>      
+                    <p>{{ course.subtitle }}</p>      
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>{{ course.description|safe }}</p> 
                 </div>
             </div>
         </div>
