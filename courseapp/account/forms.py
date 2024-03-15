@@ -17,7 +17,7 @@ class LoginUserForm(AuthenticationForm):
 
         return username
     
-    def confirm_login_allowed(self, user):
-        if user.username.startswith("x"):
-            raise forms.ValidationError("You cannot log in with this username")
+    # def confirm_login_allowed(self, user):
+    #     if user.username.startswith("x"):
+    #         raise forms.ValidationError("You cannot log in with this username")
         
