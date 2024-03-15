@@ -1,14 +1,15 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from courses.forms import CourseCreateForm, CourseEditForm, UploadForm
-from .models import Course, Category, UploadModel
+from .models import Course, Category, Slider, UploadModel
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 def index(request):
     courses = Course.objects.filter(isActive=1, isHome=True)
     categories = Category.objects.all()
+    sliders = Slider.objects.filter(is_active = True)
 
-    return render(request, "courses/index.html", {'categories': categories, 'courses': courses,})
+    return render(request, "courses/index.html", {'categories': categories, 'courses': courses, 'sliders': sliders})
 
 def isAdmin(user):
     return user.is_superuser
