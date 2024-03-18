@@ -1,0 +1,7 @@
+body {
+    background-color: #F4F4F4;
+}
+
+.invalid input, .invalid textarea {
+    border-color: #dc3545;
+}
