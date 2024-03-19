@@ -1,18 +1,15 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from books.models import Book
+from books.serializer import BookSerializer
 
+@api_view(['GET'])
 def book_list(request):
    books = Book.objects.all()
-   books_list = list(books.values())
-   return JsonResponse({
-    #    "books": ["book 1, book 2"]
-    #    "books": [
-    #        {"id":1,"title":"book 1"},
-    #        {"id":2,"title":"book 2"},
-    #    ]
-        "books": books_list
-   })
+   serializer = BookSerializer(books, many=True)
+   return Response(serializer.data)
 
 def create(request):
     pass
