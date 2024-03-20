@@ -10,3 +10,11 @@ class BookSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return Book.objects.create(**validated_data)
+    
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get("title", instance.title)
+        instance.page_number = validated_data.get("page_number", instance.page_number)
+        instance.publish_data = validated_data.get("publish_data", instance.publish_data)
+        instance.stock = validated_data.get("stock", instance.stock)
+        instance.save()
+        return instance

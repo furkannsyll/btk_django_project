@@ -22,6 +22,16 @@ def book (request, id):
         return Response({"error":"Matching record not found"}, status=status.HTTP_404_NOT_FOUND)
     
 
+@api_view(['PUT'])   
+def book_update(request, id):
+    book = Book.objects.get(pk=id)
+    serializer = BookSerializer(book, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)
+
 @api_view(['POST'])
 def book_create(request):
     serializer = BookSerializer(data=request.data)
