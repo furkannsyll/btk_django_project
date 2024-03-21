@@ -31,13 +31,19 @@ def book_update(request, id):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
+    
+@api_view(['DELETE'])   
+def book_delete(request, id):
+    book = Book.objects.get(pk=id)
+    book.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST'])
 def book_create(request):
     serializer = BookSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status= status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors)
 
